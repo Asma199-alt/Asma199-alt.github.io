@@ -1,0 +1,202 @@
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.18);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+
+  .card-media {
+    position: relative;
+    width: 100%;
+    /* Slightly taller than 16:9 to give media more presence */
+    padding-top: 60%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .card-media-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-media-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Education-specific media tweaks */
+  .card-media-education-logo {
+    object-fit: contain;
+    background: #ffffff;
+  }
+
+  .card-media-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 23, 42, 0.4),
+      rgba(15, 23, 42, 0.92)
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #f9fafb;
+    text-align: center;
+    padding: 18px 22px;
+    opacity: 0;
+    transition: opacity 160ms ease-out;
+    pointer-events: none; /* let hover be controlled by parent; button re-enables */
+  }
+
+  .card-media-overlay-button {
+    padding: 8px 26px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    background: rgba(15, 23, 42, 0.7);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.55);
+    pointer-events: auto; /* clickable even though parent overlay has none */
+  }
+
+  &.card-education:hover .card-media-overlay {
+    opacity: 1;
+  }
+
+  .card-education-title {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-education-text {
+    margin: 0 0 16px 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    max-width: 18rem;
+  }
+
+  /* Make education cards taller so the overlay text has comfortable space */
+  &.card-education .card-media {
+    padding-top: 80%;
+  }
+
+  .card-body {
+    font-family: "Montserrat", sans-serif;
+    padding: 10px 12px 8px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #ffffff;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 0.7rem; /* Smaller main title under video */
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .card-text {
+    margin: 0;
+    font-size: 0.7rem; /* Smaller text */
+    line-height: 1.2;
+    color: #4b5563;
+    max-height: 1.2em; /* ~1 line */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .card-btn {
+    align-self: flex-start;
+    margin-top: 2px;
+    padding: 2px 8px; /* Smaller button padding */
+    font-size: 0.65rem; /* Smaller button text */
+    font-weight: 500;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+    transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(252, 98, 98, 0.5);
+      opacity: 0.95;
+    }
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 2px;
+  }
+
+  .card-tag {
+    padding: 1px 6px; /* Smaller tag padding */
+    border-radius: 999px;
+    border: 1px solid rgba(37, 99, 235, 0.45);
+    font-size: 0.6rem; /* Smaller tag text */
+    font-weight: 500;
+    color: #1d4ed8;
+    background: rgba(219, 234, 254, 0.7);
+  }
+
+  @media (max-width: 992px) {
+    .card-body {
+      padding: 10px 10px 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-body {
+      padding: 8px 8px 6px;
+    }
+
+    .card-title {
+      font-size: 0.75rem;
+    }
+
+    .card-text {
+      font-size: 0.65rem;
+    }
+  }
+}

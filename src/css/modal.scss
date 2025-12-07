@@ -1,0 +1,599 @@
+@import "./../styles/include-media.scss";
+
+/* This class will be added to the body when modal is open */
+body.modal-open {
+  overflow: hidden; /* Simply prevent scrolling, no positioning tricks */
+}
+
+.modalBackground {
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Pure blur effect - no darkening */
+    background: transparent;
+    backdrop-filter: blur(15px); /* Strong blur to direct focus to modal */
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    /* Entrance animation for background - all devices */
+    animation: fadeInBackground 0.3s ease-out;
+    
+    /* Closing animation - all devices */
+    &.closing {
+      animation: fadeOutBackground 0.3s ease-in forwards;
+    }
+  }
+  
+  /* Background fade-in animation */
+  @keyframes fadeInBackground {
+    from {
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+    }
+    to {
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+  }
+  
+  /* Background fade-out animation */
+  @keyframes fadeOutBackground {
+    from {
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+    to {
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+    }
+  }
+  
+  .modalContainer {
+    width: 90vw;
+    max-width: 1200px; /* Slightly wider for rich media layouts */
+    max-height: 90vh;
+    border-radius: 12px;
+    
+    /* Balanced frosted glass effect - readable but stylish */
+    background: rgba(255, 255, 255, 0.65); /* More opaque for readability */
+    backdrop-filter: blur(25px) saturate(120%);
+    -webkit-backdrop-filter: blur(25px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3), 
+                0 10px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    
+    /* Fallback for browsers that don't support backdrop-filter */
+    @supports not (backdrop-filter: blur(25px)) {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+    
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    overflow-y: auto;
+    overflow-x: visible; /* allow nav arrows to sit slightly outside box horizontally */
+    
+    /* Entrance animation - all devices */
+    animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+    
+    /* Closing animation - all devices */
+    &.closing {
+      animation: modalSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    @include media(">=phone", "<lgphone") {
+      width: 95vw;
+      padding: 15px;
+    }
+    @include media(">=lgphone", "<tablet") {
+      width: 90vw;
+      padding: 20px;
+    }
+    @include media(">=tablet", "<desktop") {
+      width: 88vw;
+    }
+
+    /* On desktop, keep a comfortably tall, consistent height
+       so extra text scrolls inside instead of resizing the popup */
+    @include media(">=desktop") {
+      height: 80vh;
+      max-height: 80vh;
+    }
+  }
+  
+  /* Full-screen variant used for NVIDIA project detail */
+  .modalContainer.nvidia-fullscreen {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    padding: 32px 40px;
+    box-sizing: border-box;
+
+    @include media("<tablet") {
+      padding: 16px 12px;
+    }
+  }
+  
+  /* Modal entrance animation - smooth scale + fade */
+  @keyframes modalSlideIn {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  /* Modal exit animation - smooth scale + fade */
+  @keyframes modalSlideOut {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  }
+  
+  /* Content fade-in animation with upward motion */
+  @keyframes contentFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 1em;
+    
+    /* Subtle text enhancement - no longer needed with better background */
+    
+    /* Content animation - all devices */
+    animation: contentFadeIn 0.5s ease-out 0.1s both;
+    h1{
+      margin-top: 0px;
+      line-height: 1.2;
+      font-size: 2.4rem; /* Consistent with main page 80% scaling */
+
+      @include media(">=phone", "<lgphone") {
+        font-size: 1.6rem;       
+      }
+      @include media(">=lgphone", "<tablet") {
+        font-size: 1.8rem;
+      }
+      @include media(">=tablet", "<desktop") {
+        font-size: 2rem;
+      }
+    }
+
+    h2{
+      line-height: 1.2;
+      font-size: 1.2rem; /* Consistent with site subtitle sizing */
+      @include media(">=phone", "<lgphone") {
+        font-size: 0.9rem;       
+      }
+      @include media(">=lgphone", "<tablet") {
+        font-size: 1rem;
+      }
+      @include media(">=tablet", "<desktop") {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  /* NVIDIA-specific layout for detailed project modal */
+  .nvidia-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: contentFadeIn 0.45s ease-out 0.05s both;
+
+    @include media(">=desktop") {
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Simple vertical divider between media and text on desktop */
+    @include media(">=desktop") {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 6%;
+        bottom: 6%;
+        left: 60%;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(148, 163, 184, 0.6),
+          transparent
+        );
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .nvidia-modal-media-wrapper {
+    position: relative;
+
+    @include media(">=desktop") {
+      flex: 0 0 60%;
+    }
+  }
+
+  .nvidia-modal-media-title {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+
+    h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      line-height: 1.3;
+      font-weight: 600;
+      color: #0f172a;
+
+      @include media("<tablet") {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .nvidia-modal-text {
+    margin-top: 12px;
+    font-family: "Montserrat", sans-serif;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    @include media(">=desktop") {
+      flex: 0 0 40%;
+      margin-top: 0;
+    }
+  }
+
+  .nvidia-modal-tech {
+    margin: 0 0 6px 0;
+    font-size: 0.9rem;
+    color: #1f2933;
+  }
+
+  .nvidia-modal-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #111827;
+    max-width: 34rem; /* keep line length comfortable */
+  }
+
+  .nvidia-modal-highlights {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(249, 250, 251, 0.9);
+    border: 1px solid rgba(209, 213, 219, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nvidia-highlight-row {
+    display: grid;
+    grid-template-columns: 0.34fr 1fr;
+    column-gap: 12px;
+
+    @include media("<tablet") {
+      grid-template-columns: 1fr;
+      row-gap: 2px;
+    }
+  }
+
+  .nvidia-highlight-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9ca3af;
+  }
+
+  .nvidia-highlight-value {
+    font-size: 0.9rem;
+    color: #111827;
+    line-height: 1.5;
+  }
+
+  .nvidia-modal-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .nvidia-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nvidia-modal-tags-below {
+    margin-top: 10px;
+  }
+
+  .nvidia-modal-tag {
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #374151;
+    background: rgba(249, 250, 251, 0.95);
+  }
+
+  .nvidia-modal-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: #111827;
+    color: #f9fafb;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.45);
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .nvidia-modal-github:hover {
+    background: #020617;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.6);
+  }
+
+  .nvidia-modal-github svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .nvidia-modal-cta {
+    margin-top: auto; /* push to bottom of modal column */
+    padding-top: 20px;
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nvidia-media-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.35);
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .nvidia-media-nav:hover {
+    background: rgba(15, 23, 42, 0.9);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .nvidia-media-prev {
+    left: 10px;
+  }
+
+  .nvidia-media-next {
+    right: 10px;
+  }
+  
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem; /* Reduced from 2rem for consistency */
+    cursor: pointer;
+    
+    h3 {
+      margin: 0;
+      font-size: 1.5rem; /* Match button font size for close icon */
+      line-height: 1;
+    }
+  }
+  
+  /* Modal navigation arrows - on left/right edges of the screen, outside popup */
+  .modal-nav-btn {
+    position: fixed; /* relative to viewport, not the popup box */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    
+    /* Bold red circular buttons so they are clearly visible */
+    background: #ef4444;
+    border-radius: 999px;
+    border: none;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #ffffff;
+    z-index: 10002; /* above modalContainer (10000) and background (9999) */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    &:hover {
+      background: #dc2626;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+    
+    span {
+      font-weight: bold;
+      line-height: 1;
+    }
+  }
+  
+  .modal-prev {
+    left: 24px; /* near left edge of screen */
+  }
+  
+  .modal-next {
+    right: 24px; /* near right edge of screen */
+  }
+  
+  /* Modal counter - removed per user request */
+  
+  .modalContainer .body {
+    justify-content: center;
+    
+    /* Desktop: side-by-side layout with equal heights */
+    @include media(">=desktop") {
+      display: flex;
+      align-items: stretch; /* Make both image and text same height */
+      gap: 1.5rem; /* Add space between image and text */
+    }
+    
+    /* Mobile: stacked layout (default) */
+    @include media("<desktop") {
+      display: block; /* Ensure stacked layout on mobile */
+    }
+    
+    /* Content animation - all devices */
+    animation: contentFadeIn 0.6s ease-out 0.2s both; /* Slight delay for cascade effect */
+
+      .modal-media {
+        border-radius: 8px; /* Add subtle rounding */
+        width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+      }
+    ul{
+      margin-top: 0;
+      
+      /* Desktop: flex layout with equal heights */
+      @include media(">=desktop") {
+        width: 50%;
+        flex: 1; /* Allow to grow and match image height */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-size: 1.2rem; /* Desktop: matches site body text after 80% scaling */
+        
+        /* Text is now readable with improved background */
+      }
+      
+      /* Mobile: standard block layout */
+      @include media("<desktop") {
+        width: 100%;
+        display: block;
+      }
+      
+      /* Consistent font sizes and improved readability */
+      line-height: 1.6; /* Better readability across all devices */
+      
+      @include media(">=phone", "<lgphone") {
+        font-size: 0.9rem; /* Original mobile value */       
+      }
+      @include media(">=lgphone", "<tablet") {
+        font-size: 1rem; /* Original mobile value */
+      }
+      @include media(">=tablet", "<desktop") {
+        font-size: 1.1rem; /* Original mobile value */
+      }
+
+      li{
+        padding: 0.5em 0.5em 0.8em 1em; /* Increased spacing for better readability */
+        margin-bottom: 0.4em; /* Add space between list items */
+        
+        a {
+          color: #333;
+          text-decoration: underline;
+          transition: color 0.3s ease;
+          
+          &:hover {
+            color: #000;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  /* Education detail modal tweaks */
+  .education-modal-body {
+    @include media(">=desktop") {
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .modal-media {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    ul {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+  }
