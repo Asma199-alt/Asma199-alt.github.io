@@ -83,7 +83,7 @@ const siteData = {
     close: "Close"
   },
 
-  contactEmail: "jy5feng@uwaterloo.ca",
+  contactEmail: "bah3944@utulsa.edu",
 
   education: [
     {
@@ -208,133 +208,108 @@ nvidiaCarouselItems: [
   {
     media: "gr1ImitationVideo",
     type: 'video',
-      title: "GR1 humanoid robot imitation learning policy",
-      description: "GR1 humanoid robot demonstrating imitation learning capabilities for human-like movements, using a combination of trajectory optimization, motion capture data, and reinforcement learning to reproduce human demonstrations in real time. The system is trained in simulation and deployed on hardware with domain randomization and robust state estimation, allowing the robot to adapt to variations in contact, friction, and payload. This project also includes an evaluation pipeline for stability, safety margins, and energy efficiency across a large number of test motions. ",
-      tags: ["ROS2", "Isaac Sim", "Reinforcement Learning"],
+      title: "Tracer AgileX LiDAR mapping with Ouster and ROS2",
+      description: "AgileX Tracer mobile robot equipped with an Ouster LiDAR, used to build 2D maps of indoor environments and reason about obstacles in real time. Using the ouster-ros2 driver and the Tracer ROS2 stack, the system streams point clouds into a SLAM and occupancy-grid pipeline, visualized in RViz while the robot drives through the space. The resulting maps capture walls, obstacles, and free space, providing a foundation for future navigation and path-planning experiments.",
+      tags: ["ROS2", "Ouster LiDAR", "SLAM", "Mapping", "Mobile Robotics"],
       highlights: {
-        role: "Designed and trained GR1 imitation learning policies from trajectory data, tuning reward structure and curriculum.",
-        tech: "Isaac Lab, ROS2, motion capture pipelines, GPU-accelerated RL training.",
-        impact: "Enabled stable human-like whole-body motions that transfer from sim to hardware with robust performance."
+        role: "Integrated Ouster LiDAR with the Tracer base and built a ROS2 pipeline for online 2D mapping.",
+        tech: "ouster-ros2, Tracer ROS2, LiDAR point clouds, 2D SLAM, RViz visualization, cmd_vel control.",
+        impact: "Produced consistent environment maps and obstacle information suitable for downstream navigation and planning."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "h1FlipGif", // Will be imported in component
     type: 'video',
-      title: "H1 humanoid robot tries to backflip",
-      description: "H1 attempted a backflip as part of a locomotion robustness study, exploring the limits of dynamic balance and recovery strategies on a torque-controlled humanoid platform. We designed a series of progressively more aggressive maneuvers, collecting high-rate joint torque and IMU data to analyze failure modes and iterate on the controller. The work highlights the challenges of contact-rich motions and motivates future work on real-time model predictive control for extreme behaviors.",
-      tags: ["Humanoid", "Simulation", "Control"],
+      title: "Robotic replication of ancient stone tool use",
+      description: "7-axis Barrett robotic arm with force sensing used to replicate prehistoric scraping and cutting motions with experimental stone tools for archaeological research. I programmed the arm in C++ using the Libbarrett library and designed a custom SolidWorks haft that securely clamps irregular stone tools with top-mounted bolts, enabling precise control of pose, contact angle, and applied force. By scraping hides to generate use-wear while logging force–torque data at high rate, the system produces consistent, repeatable wear patterns that would otherwise require long, monotonous human experiments.",
+      tags: ["Robotic Manipulation", "Force Sensing", "C++", "Libbarrett", "Experimental Archaeology"],
       highlights: {
-        role: "Prototyped extreme-maneuver controllers and analyzed failure cases for humanoid backflip attempts.",
-        tech: "Torque-controlled humanoid models, physics simulation, Python analysis of joint-torque and IMU logs.",
-        impact: "Stress-tested balance and recovery strategies, informing safer controllers for aggressive motions."
+        role: "Implemented control software and designed the mechanical haft system to automate archaeological use-wear experiments.",
+        tech: "7-DOF Barrett arm, C++ and Libbarrett, force–torque sensing, custom end-effector design in SolidWorks.",
+        impact: "Reduced the time and variability of archaeological experiments by automating complex, repetitive scraping motions with precise, repeatable forces and trajectories."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "h1TrainVideo",
     type: 'video',
-      title: "Teach H1 humanoids how to walk",
-      description: "H1 robot during training phase, where a curriculum of walking tasks is used to gradually increase speed, step height, and terrain difficulty. The training environment leverages domain randomization on mass, friction, and contact models so that the resulting policy transfers to real hardware with minimal fine tuning. Additional tooling was built to visualize gait metrics, foot swing trajectories, and center-of-mass evolution over time to help debug and improve policies.",
-      tags: ["Locomotion", "Reinforcement Learning"],
+      title: "Preventing tipping in mobile manipulators with ZMP analysis",
+      description: "UR5e cobot mounted on Agilex Tracer and Clearpath Ridgeback mobile bases, used to study when mobile manipulators stay stable or tip over. In Gazebo and PyBullet simulation, I compared ground contact forces and base torques from physics engines with a Python ZMP-based model to check when the Zero-Moment Point leaves the support polygon. The videos show stable candlestick poses, tipping events, and close agreement between simulation and analysis, forming the basis of an ICRA 2026 paper on safe ZMP-based operation for UR5e/UR10/UR20 on different AMRs.",
+      tags: ["Mobile Manipulator", "ZMP", "Stability", "Gazebo", "PyBullet"],
       highlights: {
-        role: "Built and tuned locomotion training environments and debugging tools for H1 humanoid walking policies.",
-        tech: "Reinforcement learning, domain randomization, Python tooling for gait metric visualization.",
-        impact: "Produced walking policies that remain stable across speeds, terrains, and transfer better to real hardware."
+        role: "Developed and validated the ZMP-based stability algorithm for UR cobots on Agilex and Ridgeback bases.",
+        tech: "Gazebo-ROS simulation, PyBullet dynamics, URDF models of UR5e and Tracer/Ridgeback, Python ZMP computation, contact force and torque logging.",
+        impact: "Provided a simple method to predict tipping and define safe operating conditions for mobile manipulators, supporting the ICRA 2026 paper \"Preventing Tipping in Mobile Manipulators Using Zero Moment Point Analysis\"."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "urLousdVideo",
     type: 'video',
-      title: "Robotics arm pick and place example",
-      description: "Demonstrating OpenUSD integration with Isaac Sim for robotics applications and digital twin workflows, where a UR arm is driven through a series of scripted and learned pick-and-place motions. The scene graph is fully described in USD, enabling incremental updates to robot kinematics, sensors, and environment assets without breaking downstream tools. This project also showcases live link capabilities between the simulator and external ROS nodes for motion planning and perception.",
-      tags: ["OpenUSD", "Isaac Sim", "Digital Twin"],
+      title: "Person-following Robot with ZED depth perception",
+      description: "Tracer mobile robot equipped with a ZED depth camera that detects and follows a person wearing a blue shirt by combining 3D perception and ROS2-based control. Using OpenCV color segmentation and ZED’s depth API, the system estimates the person’s (x, y, z) position, computes distance via sqrt(x^2 + y^2 + z^2) and horizontal angle via atan(x/z), then commands linear.x and angular.z through Twist messages to keep the target centered and at a safe distance. This project demonstrates a full perception-to-control pipeline for human-aware robot behavior with real-time feedback.",
+      tags: ["ROS2", "ZED Camera", "OpenCV", "Mobile Robotics", "Person Following","3D Perception"],
       highlights: {
-        role: "Built pick-and-place scenes and workflows that connect Isaac Sim with external motion planning stacks.",
-        tech: "OpenUSD scene graphs, Isaac Sim, ROS-based planning and control.",
-        impact: "Showcased how digital twins can be updated quickly while keeping motion planning and perception pipelines stable."
+        role: "Designed and implemented the end-to-end person-following pipeline from perception to Tracer base control.",
+        tech: "ROS2, ZED SDK, OpenCV/cv2, depth-based 3D tracking, Twist command interfaces.",
+        impact: "Enabled robust human-following behavior with precise distance and angle control, showcasing practical human-robot interaction in real environments."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "frankaMoveitVideo",
     type: 'video',
-      title: "Franka robot moveit integration",
-      description: "Franka robot demonstrating MoveIt integration in both simulation and real hardware, including collision-aware motion planning, Cartesian path generation, and grasp planning for a variety of tabletop objects. The stack uses standardized ROS2 control interfaces and MoveIt task constructors, which makes it easy to swap in different planners and constraints. Logging and visualization tools were added to inspect trajectory quality, joint limits, and execution timing.",
-      tags: ["MoveIt", "Manipulation", "ROS"],
+      title: "Leader–follower swarm of Tracer robots in PyBullet",
+      description: "Three AgileX Tracer mobile robots simulated in PyBullet, where one robot acts as the leader and two others follow in formation. I implemented a simple swarm-style leader–follower controller in Python: the leader tracks a reference path, while the followers compute relative position errors in simulation and generate velocity commands to maintain spacing and alignment. This project introduced me to swarm robotics concepts like formation control and coordination, using simulation to safely explore behaviors before trying them on real robots.",
+      tags: ["Swarm Robotics", "Multi-Robot Systems", "PyBullet", "Formation Control", "Mobile Robotics"],
       highlights: {
-        role: "Integrated Franka arms with MoveIt for collision-aware motion planning and grasping tasks.",
-        tech: "ROS / ROS2 control, MoveIt task constructors, trajectory logging and visualization.",
-        impact: "Delivered reusable motion-planning pipelines for tabletop manipulation both in sim and on real hardware."
+        role: "Built the multi-robot PyBullet environment and implemented the leader–follower control logic for three Tracer bases.",
+        tech: "PyBullet physics simulation, Python control loops, multi-robot coordination, leader–follower formation control.",
+        impact: "Created a reusable sandbox for experimenting with swarm behaviors and formation control on mobile robots before hardware deployment."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "frankaDrawerVideo",
     type: 'video',
-      title: "Reinforcement learning based drawer manipulation",
-      description: "Franka robot performing drawer manipulation task, where an end-to-end reinforcement learning policy is trained to discover robust strategies for grasping, pulling, and closing a drawer under sensor noise and varying friction. The policy uses visual and proprioceptive observations and is trained in simulation before being validated on a physical drawer rig. The work emphasizes safe exploration, recovery behaviors, and accurate contact modeling.",
-      tags: ["Reinforcement Learning", "Manipulation"],
+      title: "Validating UR cobot kinematics in Gazebo and PyBullet",
+      description: "UR cobots modeled in Gazebo and PyBullet using URDFs, where I compared the simulated kinematics against the real robots before running hardware experiments. I checked link frames and joint limits against Denavit–Hartenberg parameters, ran inverse kinematics to reach target poses, and verified that simulated motions respected joint, reach, and collision constraints. This workflow let me debug mismatches between the URDF and the real arm and build safer motion plans before sending trajectories to physical UR robots.",
+      tags: ["UR Cobot", "Gazebo", "PyBullet", "Kinematics", "Simulation Safety"],
       highlights: {
-        role: "Trained and evaluated RL policies for contact-rich drawer manipulation on a Franka arm.",
-        tech: "End-to-end RL, vision and proprioception observations, contact-rich simulation.",
-        impact: "Achieved robust open/close behaviors under noise and friction changes, with policies validated on hardware."
+        role: "Set up URDF-based UR simulations and validated kinematics and motion plans against real hardware models.",
+        tech: "URDF modeling, DH parameter checks, inverse kinematics, joint-limit and collision checks in Gazebo and PyBullet.",
+        impact: "Reduced the risk of unsafe motions on real UR cobots by catching kinematic and configuration issues in simulation first."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "claw",
     type: 'video',
-      title: "High fidelity claw simulation",
-      description: "High fidelity claw simulation for grasping tasks, built on top of a physically based engine with detailed contact, friction, and actuator models. The system supports scripted scenarios for benchmarking and random object generation for large-scale data collection. This setup is used to evaluate grasp quality metrics, test control policies, and generate synthetic datasets for downstream learning pipelines.",
-      tags: ["Simulation", "Grasping"],
+      title: "JOLT Idea Challenge winning AI chatbot for student support",
+      description: "AI chatbot designed to help university students with academic and administrative questions, from course requirements and deadlines to campus services and policies. The system is built to answer common FAQs, guide students to the right resources, and reduce the load on human advisors by providing fast, 24/7 support. This project won the JOLT Idea Challenge for its potential to improve student experience and streamline university support workflows.",
+      tags: ["AI Chatbot", "Student Support", "Conversational AI", "Education"],
       highlights: {
-        role: "Developed grasping simulation scenarios and metrics for a high-fidelity parallel jaw gripper.",
-        tech: "Physically based simulation, contact and friction modeling, scripted scenario generation.",
-        impact: "Created a reusable testbed for evaluating grasp policies and generating synthetic training data."
+        role: "Designed the chatbot experience and built the core logic for answering academic and administrative questions.",
+        tech: "Conversational AI design, FAQ and knowledge-base querying, intent-focused dialogue flows.",
+        impact: "Improved access to information for students while reducing repetitive support work for staff, earning the JOLT Idea Challenge award."
       },
       github: "https://github.com/bagherhassani"
   },
   {
     media: "leatherbackVideo",
     type: 'video',
-      title: "Ackermann steering simulation for RC car",
-      description: "Ackermann steering simulation for an RC car platform, including a full vehicle dynamics model, configurable tire friction, and different terrain types. The project implements a stack of controllers from pure pursuit to MPC, allowing us to compare tracking performance for aggressive maneuvers and tight turns. It also serves as a testbed for validating autonomous driving algorithms before deploying them on physical hardware.",
-      tags: ["Ackermann Steering", "Vehicle Dynamics"],
+      title: "Simulation for Tracer Robot with LiDAR",
+      description: "ROS1 packages and Gazebo simulation setup for the AgileX Tracer mobile base with LiDAR, including drivers, URDF description, bringup, and visualization. I configured tracer_base, tracer_bringup, tracer_msgs, tracer_description, and tracer_gazebo_sim so the robot can be run in simulation with a mounted LiDAR, visualized in RViz, and controlled via teleop and cmd_vel. This work ties together CAN-to-USB setup, ugv_sdk, and launch files that spawn Tracer with LiDAR in a custom world, laying the groundwork for mapping and navigation experiments.",
+      tags: ["ROS", "Tracer Mobile Base", "LiDAR Integration", "Gazebo", "RViz"],
       highlights: {
-        role: "Modeled an RC car with Ackermann steering and implemented multiple path-tracking controllers.",
-        tech: "Vehicle dynamics simulation, pure-pursuit and MPC controllers, terrain and friction parameter sweeps.",
-        impact: "Provided a safe environment to compare controllers and tune algorithms before on-vehicle testing."
+        role: "Integrated Tracer ROS packages, LiDAR, and Gazebo simulation into a single bringup pipeline.",
+        tech: "tracer_ros stack (tracer_base, tracer_bringup, tracer_msgs, tracer_description, tracer_gazebo_sim), ugv_sdk, CAN interface setup, RViz navigation configs.",
+        impact: "Provided a ready-to-use simulation and visualization setup for Tracer with LiDAR, enabling easier mapping, navigation, and testing without risking the real robot."
       },
       github: "https://github.com/bagherhassani"
   },
-  {
-    media: "carterOutdoorVideo",
-    type: 'video',
-      title: "Outdoor robot simulation",
-      description: "Outdoor robot simulation that combines LiDAR, RGB-D, and GPS/IMU fusion to navigate large-scale environments with uneven terrain and clutter. The scenario is used to prototype global and local planners, evaluate obstacle avoidance behavior, and stress-test localization under sensor dropouts. This project demonstrates how high-fidelity simulation accelerates development before field testing.",
-      tags: ["Outdoor Robotics", "Simulation"],
-      highlights: {
-        role: "Built large-scale outdoor navigation scenarios and planners for a simulated mobile robot.",
-        tech: "LiDAR and RGB-D sensing, GPS/IMU fusion, global and local planning stacks.",
-        impact: "Reduced field-testing risk by shaking out navigation and localization issues entirely in simulation first."
-      },
-      github: "https://github.com/bagherhassani"
-  },
-  {
-    media: "agilityWalkVideo",
-    type: 'video',
-      title: "Agility humanoid robot locomotion policy",
-      description: "Agility humanoid robot demonstrating walking capabilities over a range of speeds and terrain types, including stairs, ramps, and uneven ground. The locomotion policy is trained in a GPU-accelerated simulator and then transferred to the real platform, with an emphasis on smoothness, robustness to pushes, and low energy consumption. Diagnostic tools help compare simulated and real trajectories to close the sim-to-real gap.",
-      tags: ["Humanoid", "Locomotion"],
-      highlights: {
-        role: "Helped design and evaluate locomotion policies for Agility humanoid robots across varied terrains.",
-        tech: "GPU-accelerated simulation, locomotion RL, diagnostics comparing sim and real trajectories.",
-        impact: "Improved robustness and energy efficiency of humanoid walking while narrowing the sim-to-real gap."
-      },
-      github: "https://github.com/bagherhassani"
-  }
+  
 ],
 
 // Projects Carousel Items

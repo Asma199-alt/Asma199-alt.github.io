@@ -36,7 +36,7 @@ const Card = ({
   return (
     <div className={`card ${isEducation ? "card-education" : ""}`}>
       <div className="card-media">
-        {isVideo ? (
+      {isVideo ? (
           <video
             className="card-media-element"
             src={imgUrl}
@@ -54,17 +54,17 @@ const Card = ({
             alt={heading}
             loading="lazy"
           />
-        ) : (
-          <div
+      ) : (
+        <div 
             className="card-media-image"
-            style={{
+          style={{
               backgroundImage:
                 "linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.2)),url(" +
                 imgUrl +
                 ")",
-            }}
-          />
-        )}
+          }}
+        />
+      )}
 
         {isEducation && (
           <div className="card-media-overlay">
@@ -73,17 +73,17 @@ const Card = ({
               className="card-education-text"
               dangerouslySetInnerHTML={{ __html: paragraph }}
             />
-            <button
+        <button 
               type="button"
               className="card-media-overlay-button card-education-btn"
               onClick={handleClick}
             >
               {getText(data.buttons.explore, language)}
-            </button>
+        </button>
           </div>
         )}
       </div>
-
+      
       {!isEducation && (
         <div className="card-body">
           <h3 className="card-title">{heading}</h3>

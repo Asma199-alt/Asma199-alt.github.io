@@ -62,10 +62,10 @@ const NVIDIA = () => {
     const mediaList = [baseMedia, ...galleryMedia];
 
     return {
-      ...item,
+    ...item,
       media: baseMedia,
       mediaList,
-      title: getText(item.title, language),
+    title: getText(item.title, language),
       description: getText(item.description, language),
       tags: item.tags || [],
     };
@@ -138,7 +138,7 @@ const NVIDIA = () => {
                       {item.description}
                     </p>
                   </div>
-                </Fade>
+              </Fade>
               </section>
             ))}
           </div>

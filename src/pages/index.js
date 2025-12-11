@@ -4,9 +4,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 // Components
 import Header from "../components/Header"
-// import About from "../components/about"
+import About from "../components/about"
 import Skills from "../components/skills"
-// import Footer from "../components/Footer"
+import Footer from "../components/Footer"
 import Project from "../components/projects"
 import Nvidia from "../components/NVIDIA"
 import Education from "../components/Education"
@@ -17,13 +17,13 @@ const IndexPage = () => (
     {/* eslint-disable-next-line react/jsx-pascal-case */}
     <SEO title="Steven Feng Portfolio" />
     <Header></Header>
+    <About></About>
     <Nvidia></Nvidia>
-    {/* <About></About> */}
     <Education></Education>
     <Publications></Publications>
     {/* <Project></Project> */}
     <Skills></Skills>
-    {/* <Footer></Footer> */}
+    <Footer></Footer>
   </Layout>
 )
 

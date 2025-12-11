@@ -131,16 +131,16 @@
     line-height: 1.2;
     color: #4b5563;
     max-height: 1.2em; /* ~1 line */
-    overflow: hidden;
-    display: -webkit-box;
+      overflow: hidden;
+      display: -webkit-box;
     -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+      -webkit-box-orient: vertical;
 
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-  }
+      a {
+        color: inherit;
+        text-decoration: underline;
+        }
+      }
 
   .card-btn {
     align-self: flex-start;
@@ -149,8 +149,8 @@
     font-size: 0.65rem; /* Smaller button text */
     font-weight: 500;
     border-radius: 999px;
-    border: none;
-    cursor: pointer;
+      border: none;
+      cursor: pointer;
     color: #ffffff;
     background: linear-gradient(135deg, #3b82f6, #6366f1);
     box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
@@ -179,13 +179,13 @@
     color: #1d4ed8;
     background: rgba(219, 234, 254, 0.7);
   }
-
+  
   @media (max-width: 992px) {
     .card-body {
       padding: 10px 10px 8px;
-    }
   }
-
+  }
+  
   @media (max-width: 480px) {
     .card-body {
       padding: 8px 8px 6px;
