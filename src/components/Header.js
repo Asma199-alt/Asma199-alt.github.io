@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Fade from "./animations/Fade"
 import data, { getText } from "../data"
-import imgUrl from "../images/headerbaqer.webp"
+import imgUrl from "../images/amsaself.webp"
 
 const Header = () => {
   // Track orientation for responsive adjustments, initialize with a default value
@@ -74,14 +74,6 @@ const Header = () => {
                 <p>{getText(data.headerParagraph)}</p>
               </Fade>
 
-              <Fade bottom>
-                <a
-                  href={`https://www.linkedin.com/in/stevenfeng7/`}
-                  className="primary-btn"
-                >
-                  {getText({ en: "CONNECT WITH ME!", zh: "与我联系！" })}
-                </a>
-              </Fade>
             </div>
           </div>
         </div>
@@ -112,14 +104,6 @@ const Header = () => {
             <p>{getText(data.headerParagraph)}</p>
           </Fade>
 
-          <Fade bottom>
-            <a
-              href={`https://www.linkedin.com/in/stevenfeng7/`}
-              className="primary-btn"
-            >
-              {getText({ en: "CONNECT WITH ME!", zh: "与我联系！" })}
-            </a>
-          </Fade>
         </div>
       </div>
     </div>

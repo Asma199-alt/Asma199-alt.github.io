@@ -32,7 +32,7 @@ import ecobee from "./images/workPhotos/ecobeeProduct.webp"
 
 // School images
 import WaterlooLogo from "./images/school/tulsa_logo_quality.png"
-import WaterlooImg from "./images/school/waterloo_eng_img.webp"
+import WaterlooImg from "./images/amsaself.webp"
 
 
 // Helper function for getting text (simplified as we now only support English)
@@ -51,9 +51,9 @@ export const getText = (textObj) => {
 
 const siteData = {
 
-  name: "Baqer Hassani",
+  name: "Asma Mohseni",
  
-  headerParagraph: "I am a robotics systems engineer passionate about bringing autonomous and biomimetic robots to life.",
+  headerParagraph: "My interests lie in high‑impact software and robotics work, where I can engage with complex systems in depth and help deliver solutions that matter in practice.",
 
   // Navigation labels
   nav: {
@@ -83,19 +83,19 @@ const siteData = {
     close: "Close"
   },
 
-  contactEmail: "bah3944@utulsa.edu",
+  contactEmail: "asm5800@utulsa.edu",
 
   education: [
     {
       title: "University of Tulsa",
-      para: "Bachelor of Computer Science with a Minor in Artificial Intelligence",
+      para: "Bachelor of Computer Science ",
       imageSrc: WaterlooLogo,
       workImg: WaterlooImg,
-      url: "https://uwaterloo.ca/mechanical-mechatronics-engineering/",
+      url: "",
       description: [
-        "GPA: 3.7, specialized in robotics, artificial intelligence, control systems, and embedded systems",
-        "Clubs: SAE AutoDrive Challenge (Level 4 Autonomous Vehicle), Waterloop (Hyperloop)",
-        "Scholarships: President's Scholarship, Sanford Flaming Foundation Award, Term Dean's Honor List"
+        "Majoring in Computer Science with minors in Artificial Intelligence and Mathematics, and working as an undergraduate robotics researcher at the Institute for Robotics and Autonomy",
+        "Clubs: Software Engineering Club, Artificial Intelligence Club",
+        "Relevant coursework: Java Programming, Data Structures, Algorithms, Assembly Language Programming, Programming Languages, Physics II, Numerical Methods, Interaction Design, Introduction to Cybersecurity."
       ],
     }
    
@@ -191,11 +191,11 @@ const siteData = {
   ],
 
 // About Section --------------
-  aboutParaOne: "I am a robotics engineer with expertise in simulation development, narrowing the sim-to-real gap by creation of high-fidelity virtual environments to accelerate robotic testing and deployment. I am particularly passionate about reinforcement learning and imitation learning, exploring control strategies that enable safer, more human-like interactions.",
+  aboutParaOne: "I am a computer science senior at the University of Tulsa, minoring in Mathematics and an undergraduate robotics researcher at the Institute for Robotics and Autonomy, where I focus on simulation, control, and autonomous systems.",
   
-  aboutParaTwo: "I earned my Bachelor's degree in Mechatronics Engineering from the University of Waterloo. I also conducted human-robot interaction research at the Active Robotics Interaction Lab under Dr. Yue Hu, with a publication on IEEE Robotics and Automation Letters.",
+  aboutParaTwo: "My experience spans software and robotics projects, from building simulation and control stacks for real robots to developing reliable, well-structured code in C++, Python, and ROS/ROS2; I enjoy working on systems that combine solid engineering fundamentals with practical impact",
   
-  aboutParaThree: "When I'm not building robots, you can find me hiking, playing my clarinet and accordion, or exploring new cuisines around the city.",
+  aboutParaThree: "",
 
   nvidiaTime: "2024 to Present",
 
@@ -205,19 +205,7 @@ nvidiaExperience: [
 
 // NVIDIA Carousel Items
 nvidiaCarouselItems: [
-  {
-    media: "gr1ImitationVideo",
-    type: 'video',
-      title: "Tracer AgileX LiDAR mapping with Ouster and ROS2",
-      description: "AgileX Tracer mobile robot equipped with an Ouster LiDAR, used to build 2D maps of indoor environments and reason about obstacles in real time. Using the ouster-ros2 driver and the Tracer ROS2 stack, the system streams point clouds into a SLAM and occupancy-grid pipeline, visualized in RViz while the robot drives through the space. The resulting maps capture walls, obstacles, and free space, providing a foundation for future navigation and path-planning experiments.",
-      tags: ["ROS2", "Ouster LiDAR", "SLAM", "Mapping", "Mobile Robotics"],
-      highlights: {
-        role: "Integrated Ouster LiDAR with the Tracer base and built a ROS2 pipeline for online 2D mapping.",
-        tech: "ouster-ros2, Tracer ROS2, LiDAR point clouds, 2D SLAM, RViz visualization, cmd_vel control.",
-        impact: "Produced consistent environment maps and obstacle information suitable for downstream navigation and planning."
-      },
-      github: "https://github.com/bagherhassani"
-  },
+  // wam
   {
     media: "h1FlipGif", // Will be imported in component
     type: 'video',
@@ -231,84 +219,80 @@ nvidiaCarouselItems: [
       },
       github: "https://github.com/bagherhassani"
   },
+  //pick and place bimanual 
   {
-    media: "h1TrainVideo",
+    media: "siggraphTalk",
     type: 'video',
-      title: "Preventing tipping in mobile manipulators with ZMP analysis",
-      description: "UR5e cobot mounted on Agilex Tracer and Clearpath Ridgeback mobile bases, used to study when mobile manipulators stay stable or tip over. In Gazebo and PyBullet simulation, I compared ground contact forces and base torques from physics engines with a Python ZMP-based model to check when the Zero-Moment Point leaves the support polygon. The videos show stable candlestick poses, tipping events, and close agreement between simulation and analysis, forming the basis of an ICRA 2026 paper on safe ZMP-based operation for UR5e/UR10/UR20 on different AMRs.",
-      tags: ["Mobile Manipulator", "ZMP", "Stability", "Gazebo", "PyBullet"],
+      title: "Dual-Arm Pick-and-Place (2× UR5e — Python)",
+      description: "Controlled two Universal Robots UR5e arms from a single Python program with synchronized timing and collision avoidance for shared-object handling. Documented setup steps and safety checks for repeatable lab use. Achieved 90% success (45/50 runs) for synchronized dual-arm pick-and-place and reduced average cycle time by 26.7%.",
+      tags: ["Python", "UR5e", "Dual-Arm Manipulation", "Pick-and-Place", "Collision Avoidance", "Synchronized Motion"],
       highlights: {
-        role: "Developed and validated the ZMP-based stability algorithm for UR cobots on Agilex and Ridgeback bases.",
-        tech: "Gazebo-ROS simulation, PyBullet dynamics, URDF models of UR5e and Tracer/Ridgeback, Python ZMP computation, contact force and torque logging.",
-        impact: "Provided a simple method to predict tipping and define safe operating conditions for mobile manipulators, supporting the ICRA 2026 paper \"Preventing Tipping in Mobile Manipulators Using Zero Moment Point Analysis\"."
+        role: "Built a single Python controller to coordinate two UR5e arms for synchronized, collision-aware pick-and-place.",
+        tech: "Python, synchronized dual-arm motion timing, collision avoidance, shared-object handling, lab deployment documentation.",
+        impact: "Achieved 90% success (45/50 runs) and reduced average cycle time by 26.7% for synchronized dual-arm pick-and-place."
       },
       github: "https://github.com/bagherhassani"
   },
-  {
-    media: "urLousdVideo",
-    type: 'video',
-      title: "Person-following Robot with ZED depth perception",
-      description: "Tracer mobile robot equipped with a ZED depth camera that detects and follows a person wearing a blue shirt by combining 3D perception and ROS2-based control. Using OpenCV color segmentation and ZED’s depth API, the system estimates the person’s (x, y, z) position, computes distance via sqrt(x^2 + y^2 + z^2) and horizontal angle via atan(x/z), then commands linear.x and angular.z through Twist messages to keep the target centered and at a safe distance. This project demonstrates a full perception-to-control pipeline for human-aware robot behavior with real-time feedback.",
-      tags: ["ROS2", "ZED Camera", "OpenCV", "Mobile Robotics", "Person Following","3D Perception"],
-      highlights: {
-        role: "Designed and implemented the end-to-end person-following pipeline from perception to Tracer base control.",
-        tech: "ROS2, ZED SDK, OpenCV/cv2, depth-based 3D tracking, Twist command interfaces.",
-        impact: "Enabled robust human-following behavior with precise distance and angle control, showcasing practical human-robot interaction in real environments."
-      },
-      github: "https://github.com/bagherhassani"
-  },
-  {
-    media: "frankaMoveitVideo",
-    type: 'video',
-      title: "Leader–follower swarm of Tracer robots in PyBullet",
-      description: "Three AgileX Tracer mobile robots simulated in PyBullet, where one robot acts as the leader and two others follow in formation. I implemented a simple swarm-style leader–follower controller in Python: the leader tracks a reference path, while the followers compute relative position errors in simulation and generate velocity commands to maintain spacing and alignment. This project introduced me to swarm robotics concepts like formation control and coordination, using simulation to safely explore behaviors before trying them on real robots.",
-      tags: ["Swarm Robotics", "Multi-Robot Systems", "PyBullet", "Formation Control", "Mobile Robotics"],
-      highlights: {
-        role: "Built the multi-robot PyBullet environment and implemented the leader–follower control logic for three Tracer bases.",
-        tech: "PyBullet physics simulation, Python control loops, multi-robot coordination, leader–follower formation control.",
-        impact: "Created a reusable sandbox for experimenting with swarm behaviors and formation control on mobile robots before hardware deployment."
-      },
-      github: "https://github.com/bagherhassani"
-  },
-  {
-    media: "frankaDrawerVideo",
-    type: 'video',
-      title: "Validating UR cobot kinematics in Gazebo and PyBullet",
-      description: "UR cobots modeled in Gazebo and PyBullet using URDFs, where I compared the simulated kinematics against the real robots before running hardware experiments. I checked link frames and joint limits against Denavit–Hartenberg parameters, ran inverse kinematics to reach target poses, and verified that simulated motions respected joint, reach, and collision constraints. This workflow let me debug mismatches between the URDF and the real arm and build safer motion plans before sending trajectories to physical UR robots.",
-      tags: ["UR Cobot", "Gazebo", "PyBullet", "Kinematics", "Simulation Safety"],
-      highlights: {
-        role: "Set up URDF-based UR simulations and validated kinematics and motion plans against real hardware models.",
-        tech: "URDF modeling, DH parameter checks, inverse kinematics, joint-limit and collision checks in Gazebo and PyBullet.",
-        impact: "Reduced the risk of unsafe motions on real UR cobots by catching kinematic and configuration issues in simulation first."
-      },
-      github: "https://github.com/bagherhassani"
-  },
+  // gripper control 
   {
     media: "claw",
     type: 'video',
-      title: "JOLT Idea Challenge winning AI chatbot for student support",
-      description: "AI chatbot designed to help university students with academic and administrative questions, from course requirements and deadlines to campus services and policies. The system is built to answer common FAQs, guide students to the right resources, and reduce the load on human advisors by providing fast, 24/7 support. This project won the JOLT Idea Challenge for its potential to improve student experience and streamline university support workflows.",
-      tags: ["AI Chatbot", "Student Support", "Conversational AI", "Education"],
+      title: "OnRobot Gripper Control (Python + C++)",
+      description: "Implemented a small control library to operate OnRobot end-effectors on Universal Robots arms—RG2 and 2FG7 (two‑finger grippers) and VG10 (vacuum gripper). From code, I could set the gripper opening width and grip force, read back the current width for feedback, and switch vacuum channels on/off. I wrote both a Python version (quick iteration) and a C++ version (for tighter integration with our core stack), which made grasping settings easier to repeat across lab experiments.",
+      tags: ["Robotic Grippers", "Universal Robots", "OnRobot", "Python", "C++", "End-Effector Control", "Force/Width Control", "Automation"],
       highlights: {
-        role: "Designed the chatbot experience and built the core logic for answering academic and administrative questions.",
-        tech: "Conversational AI design, FAQ and knowledge-base querying, intent-focused dialogue flows.",
-        impact: "Improved access to information for students while reducing repetitive support work for staff, earning the JOLT Idea Challenge award."
+        role: "Implemented Python and C++ gripper-control clients to command OnRobot grippers from code.",
+        tech: "XML-RPC over HTTP (UR controller), Python (pycurl/xmlrpc), C++ HTTP client + XML parsing, width/force/vacuum parameterization.",
+        impact: "Enabled more repeatable, programmatic grasping with tunable width and force, reducing manual teach-pendant steps during experiments."
       },
       github: "https://github.com/bagherhassani"
   },
   {
-    media: "leatherbackVideo",
+    media: "newton",
     type: 'video',
-      title: "Simulation for Tracer Robot with LiDAR",
-      description: "ROS1 packages and Gazebo simulation setup for the AgileX Tracer mobile base with LiDAR, including drivers, URDF description, bringup, and visualization. I configured tracer_base, tracer_bringup, tracer_msgs, tracer_description, and tracer_gazebo_sim so the robot can be run in simulation with a mounted LiDAR, visualized in RViz, and controlled via teleop and cmd_vel. This work ties together CAN-to-USB setup, ugv_sdk, and launch files that spawn Tracer with LiDAR in a custom world, laying the groundwork for mapping and navigation experiments.",
-      tags: ["ROS", "Tracer Mobile Base", "LiDAR Integration", "Gazebo", "RViz"],
+      title: "UR Singularity Detection & Path Correction",
+      description: "Implemented a safety check for UR arm motion that detects near‑singular joint configurations and blocks unsafe commands before execution to prevent controller safety stops. When possible, the code auto-corrects the motion by retargeting joint commands before sending them to the robot (fixed ~99% of unsafe cases).",
+      tags: ["Universal Robots", "Singularity", "Robot Motion", "Trajectory Checking", "Python", "Safety"],
       highlights: {
-        role: "Integrated Tracer ROS packages, LiDAR, and Gazebo simulation into a single bringup pipeline.",
-        tech: "tracer_ros stack (tracer_base, tracer_bringup, tracer_msgs, tracer_description, tracer_gazebo_sim), ugv_sdk, CAN interface setup, RViz navigation configs.",
-        impact: "Provided a ready-to-use simulation and visualization setup for Tracer with LiDAR, enabling easier mapping, navigation, and testing without risking the real robot."
+        role: "Implemented singularity detection + correction for UR arm joint commands.",
+        tech: "Python, joint-space checks for near-singular poses, safe-command gating, joint retargeting before execution.",
+        impact: "Prevented safety stops and auto-corrected ~99% of unsafe motions before execution."
       },
       github: "https://github.com/bagherhassani"
   },
+
+  // singularity detection
+  {
+    media: "frankaMoveitVideo",
+    type: 'video',
+      title: "Anti‑Tipping Simulation (PyBullet + ZMP)",
+      description: "Built and validated a PyBullet simulation of a UR5e mounted on a box for our stability / anti‑tipping study. I imported the robot model, ran motion cases, and computed a ZMP‑based tipping check to predict when the system would become unstable. I used the simulation results to help verify and iterate the project’s anti‑tipping logic before hardware testing.",
+      tags: ["PyBullet", "UR5e", "Stability", "Anti‑Tipping", "ZMP", "Simulation", "Robotics"],
+      highlights: {
+        role: "Simulation support for the stability/anti‑tipping paper (UR5e on a box).",
+        tech: "PyBullet physics simulation, imported UR model, ZMP-based tipping criterion, test-case sweeps and result comparison.",
+        impact: "Helped validate stability behavior in simulation and reduced risk before running experiments on hardware."
+      },
+      github: "https://github.com/bagherhassani"
+  },
+
+  // smooth trajecory generation
+  {
+    media: "urLousdVideo",
+    type: 'video',
+      title: "ZED Object Following (ROS 2)",
+      description: "Built an end-to-end object-following system for a wheeled robot using a ZED depth camera and OpenCV. The robot tracks a blue target, estimates its 3D position (x, y, z), and publishes ROS 2 `Twist` commands (linear.x, angular.z) so it follows while keeping the target centered and at a safe distance.",
+      tags: ["ROS 2", "ZED Depth Camera", "OpenCV", "3D Localization", "Wheeled Robot", "Visual Servoing"],
+      highlights: {
+        role: "Designed and implemented the full perception-to-control loop for object following.",
+        tech: "OpenCV color segmentation, ZED depth for 3D target localization, ROS 2 publishers, `geometry_msgs/Twist` control.",
+        impact: "Enabled reliable real-time following behavior with stable distance and heading control."
+      },
+      github: "https://github.com/bagherhassani"
+  },
+  // singularity detection
+  
+  
   
 ],
 
@@ -439,15 +423,16 @@ projectsCarouselItems: [
 
   skills: [
     {
-      img: clangIcon,
-      para:
-        "C++",
-    },
-    {
       img: codeIcon,
       para:
         "Python",
     },
+    {
+      img: clangIcon,
+      para:
+        "C++",
+    },
+    
     {
       img: RPIIcon,
       para:
@@ -477,7 +462,7 @@ projectsCarouselItems: [
     {
       img: airplaneIcon,
       para:
-        "Lidar, SLAM, Path Planning, Computer Vision",
+        "Computer Vision (OpenCV + Depth Cameras)",
     },
     
   ],

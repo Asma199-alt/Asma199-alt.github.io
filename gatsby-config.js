@@ -1,7 +1,7 @@
 module.exports = {
   // Remove pathPrefix for custom domain setup
   siteMetadata: {
-    title: `Hi, I'm am Baqer Hassani`,
+    title: `Hi, I'm Asma Mohseni`,
     description: `Here is my personal website`,
     author: `Steven Feng`,
   },

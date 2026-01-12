@@ -104,15 +104,17 @@ const Publications = () => {
       subtitle: "International Mechanical Engineering Congress and Exposition 2024",
       imageSrc: hriLabGif,
       projectLink: "https://imece.secure-platform.com/a/solicitations/236/sessiongallery/18145/application/151001",
-      type: "IEEE"
+      buttonText: "View Publication",
+      disabled: false
     },
     {
       id: 1,
       title: "Preventing Tipping in Mobile Manipulators Using Zero Moment Point Analysis",
-      subtitle: "ICRA, 2025",
+      subtitle: "ICRA, 2026",
       imageSrc: urLousdVideo,
-      projectLink: "https://dl.acm.org/doi/10.1145/3721251.3736528",
-      type: "ICRA 2026"
+      projectLink: null,
+      buttonText: "Under ICRA Review",
+      disabled: true
     }
   ];
 
@@ -220,17 +222,19 @@ const Publications = () => {
                     )}
                   </div>
                   <div className="content">
-                    <div className="publication-type" data-type={publication.type}>{publication.type}</div>
                     <h3 className="header">{publication.title}</h3>
                     <h4 className="subtitle">{publication.subtitle}</h4>
                     <button 
                       onClick={() => {
-                        window.open(publication.projectLink, "_blank");
+                        if (!publication.disabled && publication.projectLink) {
+                          window.open(publication.projectLink, "_blank");
+                        }
                       }}
                       type="button" 
                       className="btn"
+                      disabled={publication.disabled}
                     > 
-                      {getText("View Publication")}
+                      {getText(publication.buttonText)}
                     </button>
                   </div>
                 </div>

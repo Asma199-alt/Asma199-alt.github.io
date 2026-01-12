@@ -141,6 +141,28 @@ export default function Modal({ closeModal, id, type = "project", totalItems = 0
           </>
         )}
         <div className="title">
+          {/*
+            Disabled: "Degree in progress" progress bar + animations in education modal.
+            {type === "education" && content.title === "University of Tulsa" && (
+              <div className="education-progress">
+                <div className="education-progress-header">
+                  <span className="education-progress-label">Degree in progress</span>
+                  <span className="education-progress-value">4 / 8 semesters</span>
+                </div>
+                <div className="education-progress-bar">
+                  {Array.from({ length: 8 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className={`education-progress-segment${
+                        index < 4 ? " filled" : ""
+                      }`}
+                      style={{ "--i": index }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          */}
           <h1>{type === "project" ? getText(content.position, language) : getText(content.title, language)}</h1>
           <h2>{type === "project" ? content.date : ""}</h2>
         </div>
@@ -166,11 +188,10 @@ export default function Modal({ closeModal, id, type = "project", totalItems = 0
         )}
 
         <ul>
-        {content.description.map((desc, index) => (
-                <li key={index}>{getText(desc, language)}</li>
-              ))}
-          
-          </ul>
+          {content.description.map((desc, index) => (
+            <li key={index}>{getText(desc, language)}</li>
+          ))}
+        </ul>
         </div>
         {/* <div className="footer">
           <button onClick={() => closeModal(false)}>close</button>

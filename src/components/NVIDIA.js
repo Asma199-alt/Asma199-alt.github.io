@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Fade from "./animations/Fade"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
@@ -6,26 +6,99 @@ import "../styles/NVIDIA.scss"
 import NvidiaModal from "./NvidiaModal"
 
 // Import NVIDIA images from the nvidia folder
-import gr1ImitationVideo from "./../images/nvidia/BaqerHassani_Tracer_Lidar_Swarm_Video_Demo.mp4"
-import h1FlipGif from "./../images/nvidia/wam_barret.mp4"
-import leatherbackVideo from "./../images/nvidia/baqer_Vid/anti_tip_paper.mp4"
-import h1TrainVideo from "./../images/nvidia/baqer_Vid/swarm_robotic_3tracers.mp4"
-import frankaMoveitVideo from "./../images/nvidia/Franka Moveit.mp4"
+import gr1ImitationVideo from "./../images/nvidia/baqer_Vid/Tracer_Lidar.mp4"
+import h1FlipGif from "./../images/nvidia/asma_Vid/Archelology2.mp4"
+import leatherbackVideo from "./../images/nvidia/baqer_Vid/swarm_robotic_3tracers.mp4"
+import h1TrainVideo from "./../images/nvidia/baqer_Vid/anti_tip_paper.mp4"
+import frankaMoveitVideo from "./../images/nvidia/asma_Vid/sim.mp4"
 import frankaDrawerVideo from "./../images/nvidia/Franka Drawer.mp4"
 import carterOutdoorVideo from "./../images/nvidia/Carter Outdoor.mp4"
 import agilityWalkVideo from "./../images/nvidia/Agility Walk.mp4"
 import gtc_lousd from "./../images/nvidia/IMG_2228.webp"
 import gtc_sil from "./../images/nvidia/gtc_sil.webp"
-import newton from "./../images/nvidia/newton.webp"
-import claw from "./../images/nvidia/claw.mp4"
-import urLousdVideo from "./../images/publications/ur_lousd.mp4"
-import siggraphTalk from "./../images/nvidia/IMG_2877.webp"
+import newton from "./../images/nvidia/asma_Vid/singularity.mp4"
+import claw from "./../images/nvidia/asma_Vid/gripper.mp4"
+import urLousdVideo from "./../images/nvidia/asma_Vid/follow2.mp4"
+import siggraphTalk from "./../images/nvidia/asma_Vid/bimanualpickplace.mp4"
+
+
 
 // Helper to detect video media
 const isVideoFile = (url) => {
   if (!url) return false;
   const videoExtensions = [".webm", ".mp4", ".mov", ".avi"];
   return videoExtensions.some((ext) => url.toLowerCase().endsWith(ext));
+};
+
+const NvidiaPreviewVideo = ({ src, className, previewStart, previewEnd }) => {
+  const videoRef = useRef(null);
+  const hasPreviewWindow =
+    typeof previewStart === "number" && typeof previewEnd === "number";
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !hasPreviewWindow) return;
+
+    const safeStart = Math.max(0, previewStart);
+    const safeEnd = Math.max(safeStart, previewEnd);
+
+    const seekToStartIfNeeded = () => {
+      try {
+        if (
+          Number.isFinite(video.currentTime) &&
+          (video.currentTime < safeStart || video.currentTime > safeEnd)
+        ) {
+          video.currentTime = safeStart;
+        }
+      } catch (_) {
+        // ignore
+      }
+    };
+
+    const handleLoadedMetadata = () => {
+      seekToStartIfNeeded();
+      video.play().catch(() => {});
+    };
+
+    const handleTimeUpdate = () => {
+      // Add a tiny cushion so it loops cleanly
+      if (video.currentTime >= safeEnd - 0.05) {
+        try {
+          video.currentTime = safeStart;
+          video.play().catch(() => {});
+        } catch (_) {
+          // ignore
+        }
+      }
+    };
+
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("timeupdate", handleTimeUpdate);
+
+    // If metadata is already available, apply immediately
+    if (video.readyState >= 1) {
+      handleLoadedMetadata();
+    }
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, [hasPreviewWindow, previewStart, previewEnd, src]);
+
+  return (
+    <video
+      ref={videoRef}
+      className={className}
+      src={src}
+      autoPlay
+      muted
+      loop={!hasPreviewWindow}
+      playsInline
+      preload="metadata"
+      loading="lazy"
+    />
+  );
 };
 
 const NVIDIA = () => {
@@ -93,14 +166,11 @@ const NVIDIA = () => {
                 <Fade bottom distance="20px">
                   <div className="nvidia-media">
                     {isVideoFile(item.media) ? (
-                      <video
+                      <NvidiaPreviewVideo
                         className="nvidia-media-element"
                         src={item.media}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        loading="lazy"
+                        previewStart={item.previewStart}
+                        previewEnd={item.previewEnd}
                       />
                     ) : (
                       <img
