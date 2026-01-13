@@ -25,10 +25,12 @@ const Navbar = () => {
               <button onClick={() => (window.location.href = withPrefix("/#nvidia"))} type="button">
                 {getText(data.nav.work)}
               </button>
-              {/* Replaced Contact with Resume link */}
-              <button onClick={() => (window.location.href = withPrefix("/resume"))} type="button">
-                {getText(data.nav.resume)}
-              </button>
+              {/*
+                Resume button hidden (kept for later):
+                <button onClick={() => (window.location.href = withPrefix("/resume"))} type="button">
+                  {getText(data.nav.resume)}
+                </button>
+              */}
             </div>
           </div>
         </div>

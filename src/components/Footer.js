@@ -19,17 +19,20 @@ const Footer = () => {
             <a className="email-link" href={`mailto:${data.contactEmail}`}>
               {data.contactEmail}
             </a>
-            <button
-              type="button"
-              className="primary-btn"
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  window.location.href = withPrefix("/resume");
-                }
-              }}
-            >
-              {getText(data.nav.resume, language)}
-            </button>
+            {/*
+              Resume button hidden (kept for later):
+              <button
+                type="button"
+                className="primary-btn"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.location.href = withPrefix("/resume");
+                  }
+                }}
+              >
+                {getText(data.nav.resume, language)}
+              </button>
+            */}
           </Fade>
         </div>
       </div>
