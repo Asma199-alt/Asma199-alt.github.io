@@ -58,6 +58,12 @@ typings/
 .cache/
 public
 
+# Large media (avoid GitHub 100MB file limit)
+src/images/**/*.mp4
+src/images/**/*.webm
+src/images/**/*.mov
+src/images/**/*.MOV
+
 # Mac files
 .DS_Store
 
