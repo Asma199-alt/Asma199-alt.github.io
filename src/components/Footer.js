@@ -1,4 +1,5 @@
 import React from "react"
+import { withPrefix } from "gatsby"
 import Fade from "./animations/Fade"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
@@ -23,7 +24,7 @@ const Footer = () => {
               className="primary-btn"
               onClick={() => {
                 if (typeof window !== "undefined") {
-                  window.location.href = "/resume";
+                  window.location.href = withPrefix("/resume");
                 }
               }}
             >

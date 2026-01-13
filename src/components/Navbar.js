@@ -1,4 +1,5 @@
 import React from "react"
+import { withPrefix } from "gatsby"
 import data, { getText } from "../data"
 
 const Navbar = () => {
@@ -18,14 +19,14 @@ const Navbar = () => {
           
           <div className="center-nav">
             <div className="links-wrapper">
-              <button onClick= {event =>  window.location.href='/#home'} type="button">
+              <button onClick={() => (window.location.href = withPrefix("/#home"))} type="button">
                 {getText(data.nav.home)}
               </button>
-              <button onClick= {event =>  window.location.href='/#nvidia'} type="button">
+              <button onClick={() => (window.location.href = withPrefix("/#nvidia"))} type="button">
                 {getText(data.nav.work)}
               </button>
               {/* Replaced Contact with Resume link */}
-              <button onClick={event => window.location.href='/resume'} type="button">
+              <button onClick={() => (window.location.href = withPrefix("/resume"))} type="button">
                 {getText(data.nav.resume)}
               </button>
             </div>

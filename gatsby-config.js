@@ -1,5 +1,6 @@
 module.exports = {
-  // Remove pathPrefix for custom domain setup
+  // GitHub Pages project site (https://asma199-alt.github.io/UniversityPortfolio/)
+  pathPrefix: `/UniversityPortfolio`,
   siteMetadata: {
     title: `Hi, I'm Asma Mohseni`,
     description: `Here is my personal website`,
