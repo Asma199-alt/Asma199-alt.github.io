@@ -51,7 +51,6 @@ const Education = () => {
           {openModal && <Modal 
             closeModal={setOpenModal} 
             id={id} 
-            type="education"
             totalItems={data.education.length}
             onPrevious={handlePrevious}
             onNext={handleNext}

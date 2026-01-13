@@ -5,21 +5,16 @@ import data, { getText } from "../data"
 import "../styles/NVIDIA.scss"
 import NvidiaModal from "./NvidiaModal"
 
-// Import NVIDIA images from the nvidia folder
-import gr1ImitationVideo from "./../images/nvidia/baqer_Vid/Tracer_Lidar.mp4"
-import h1FlipGif from "./../images/nvidia/asma_Vid/Archelology2.mp4"
-import leatherbackVideo from "./../images/nvidia/baqer_Vid/swarm_robotic_3tracers.mp4"
-import h1TrainVideo from "./../images/nvidia/baqer_Vid/anti_tip_paper.mp4"
-import frankaMoveitVideo from "./../images/nvidia/asma_Vid/sim.mp4"
-import frankaDrawerVideo from "./../images/nvidia/Franka Drawer.mp4"
-import carterOutdoorVideo from "./../images/nvidia/Carter Outdoor.mp4"
-import agilityWalkVideo from "./../images/nvidia/Agility Walk.mp4"
-import gtc_lousd from "./../images/nvidia/IMG_2228.webp"
-import gtc_sil from "./../images/nvidia/gtc_sil.webp"
-import newton from "./../images/nvidia/asma_Vid/singularity.mp4"
-import claw from "./../images/nvidia/asma_Vid/gripper.mp4"
-import urLousdVideo from "./../images/nvidia/asma_Vid/follow2.mp4"
-import siggraphTalk from "./../images/nvidia/asma_Vid/bimanualpickplace.mp4"
+// Videos hosted on GitHub Releases (keeps repo lightweight)
+const RELEASES_BASE =
+  "https://github.com/Asma199-alt/portfolio/releases/download/videos";
+
+const h1FlipGif = `${RELEASES_BASE}/Archelology2.mp4`;
+const frankaMoveitVideo = `${RELEASES_BASE}/sim.mp4`;
+const newton = `${RELEASES_BASE}/singularity.mp4`;
+const claw = `${RELEASES_BASE}/gripper.mp4`;
+const urLousdVideo = `${RELEASES_BASE}/follow2.mp4`;
+const siggraphTalk = `${RELEASES_BASE}/bimanualpickplace.mp4`;
 
 
 
@@ -108,18 +103,10 @@ const NVIDIA = () => {
   
   // Media mapping
   const mediaMap = {
-    gr1ImitationVideo,
     h1FlipGif,
-    h1TrainVideo,
-    urLousdVideo,
     frankaMoveitVideo,
-    frankaDrawerVideo,
     claw,
-    leatherbackVideo,
-    carterOutdoorVideo,
-    agilityWalkVideo,
-    gtc_lousd,
-    gtc_sil,
+    urLousdVideo,
     newton,
     siggraphTalk
   };
@@ -155,9 +142,11 @@ const NVIDIA = () => {
         <div className="nvidia-wrapper">
           <div className="nvidia-projects">
             {items.map((item, index) => (
-              <section
+              <button
+                type="button"
                 className="nvidia-project"
                 key={index}
+                aria-label={`Open details for ${item.title}`}
                 onClick={() => {
                   setSelectedIndex(index);
                   setOpenModal(true);
@@ -209,7 +198,7 @@ const NVIDIA = () => {
                     </p>
                   </div>
               </Fade>
-              </section>
+              </button>
             ))}
           </div>
 

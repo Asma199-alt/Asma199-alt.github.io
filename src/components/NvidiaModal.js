@@ -90,6 +90,12 @@ export default function NvidiaModal({
         role="button"
         tabIndex={0}
         aria-label="Close modal"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleClose();
+          }
+        }}
       ></div>
       <div className={`modalContainer ${isClosing ? "closing" : ""}`}>
         <div className="titleCloseBtn">

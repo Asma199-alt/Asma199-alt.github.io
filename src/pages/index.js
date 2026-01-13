@@ -7,7 +7,6 @@ import Header from "../components/Header"
 import About from "../components/about"
 import Skills from "../components/skills"
 import Footer from "../components/Footer"
-import Project from "../components/projects"
 import Nvidia from "../components/NVIDIA"
 import Education from "../components/Education"
 // import Publications from "../components/Publications" // (disabled) Publications section
@@ -23,7 +22,6 @@ const IndexPage = () => (
     {/*
       <Publications></Publications>
     */}
-    {/* <Project></Project> */}
     <Skills></Skills>
     <Footer></Footer>
   </Layout>

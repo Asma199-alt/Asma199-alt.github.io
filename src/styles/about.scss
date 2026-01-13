@@ -56,7 +56,11 @@
         margin-top: 1vh;
         font-size: 1.2rem; /* Reduced from 1.5rem (80% of original) */
         line-height: 1.5;
-        text-align: justify;
+        // Justified text creates huge gaps between words on wide/short lines.
+        text-align: left;
+        word-spacing: normal;
+        letter-spacing: normal;
+        text-justify: auto;
         @media (max-width: 992px) {
           font-size: 1.2rem; /* Reverted to original mobile value */
         }

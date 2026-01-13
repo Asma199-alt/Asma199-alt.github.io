@@ -10,12 +10,12 @@ const isVideoFile = (url) => {
   return videoExtensions.some(ext => url.toLowerCase().endsWith(ext));
 };
 
-export default function Modal({ closeModal, id, type = "project", totalItems = 0, onPrevious, onNext }) {
+export default function Modal({ closeModal, id, totalItems = 0, onPrevious, onNext }) {
   const { language } = useLanguage();
   const [isClosing, setIsClosing] = useState(false);
   
-  // Determine which data to use based on the type
-  const content = type === "project" ? data.projects[id] : data.education[id];
+  // Education modal only (projects modal removed during cleanup)
+  const content = data.education[id];
   
   // Enhanced close function with animation
   const handleClose = useCallback(() => {
@@ -163,10 +163,9 @@ export default function Modal({ closeModal, id, type = "project", totalItems = 0
               </div>
             )}
           */}
-          <h1>{type === "project" ? getText(content.position, language) : getText(content.title, language)}</h1>
-          <h2>{type === "project" ? content.date : ""}</h2>
+          <h1>{getText(content.title, language)}</h1>
         </div>
-        <div className={`body ${type === "education" ? "education-modal-body" : ""}`}>
+        <div className="body education-modal-body">
         {isVideoFile(content.workImg || content.imageSrc) ? (
           <video 
             src={content.workImg || content.imageSrc} 
