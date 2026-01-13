@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: {
     title: `Hi, I'm Asma Mohseni`,
     description: `Here is my personal website`,
-    author: `Steven Feng`,
+    author: `Asma Mohseni`,
   },
   // Add development-specific configuration
   flags: {
@@ -23,8 +23,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Steven Feng Portfolio`,
-        short_name: `Steven`,
+        name: `Asma Mohseni Portfolio`,
+        short_name: `Asma`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

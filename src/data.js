@@ -245,7 +245,7 @@ nvidiaCarouselItems: [
   social: [
 
     { img: githubIcon, 
-      url: "https://github.com/stevenf7"
+      url: "https://github.com/Asma199-alt"
     },
     {
       img: googleScholarIcon,

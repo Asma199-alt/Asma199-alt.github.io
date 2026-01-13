@@ -14,7 +14,7 @@ import Education from "../components/Education"
 const IndexPage = () => (
   <Layout>
     {/* eslint-disable-next-line react/jsx-pascal-case */}
-    <SEO title="Steven Feng Portfolio" />
+    <SEO title="Asma Mohseni Portfolio" />
     <Header></Header>
     <About></About>
     <Nvidia></Nvidia>
