@@ -1,0 +1,32 @@
+import React from "react"
+
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+// Components
+import Header from "../components/Header"
+import About from "../components/about"
+import Skills from "../components/skills"
+import Footer from "../components/Footer"
+import Nvidia from "../components/NVIDIA"
+import Projects from "../components/Projects"
+import Education from "../components/Education"
+// import Publications from "../components/Publications" // (disabled) Publications section
+
+const IndexPage = () => (
+  <Layout>
+    {/* eslint-disable-next-line react/jsx-pascal-case */}
+    <SEO title="Asma Mohseni Portfolio" />
+    <Header></Header>
+    <About></About>
+    <Nvidia></Nvidia>
+    <Projects></Projects>
+    <Education></Education>
+    {/*
+      <Publications></Publications>
+    */}
+    <Skills></Skills>
+    <Footer></Footer>
+  </Layout>
+)
+
+export default IndexPage

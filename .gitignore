@@ -59,6 +59,7 @@ typings/
 public
 
 # Large media (avoid GitHub 100MB file limit)
+static/university-ai-assistant-demo.mov
 src/images/**/*.mp4
 src/images/**/*.webm
 src/images/**/*.mov
