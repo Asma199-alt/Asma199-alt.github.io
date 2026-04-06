@@ -5,8 +5,8 @@ import openCVIcon from "./images/skillsIcon/git_gihub_logo.png"
 import RPIIcon from "./images/skillsIcon/java_logo.png"
 import SolidworksIcon from "./images/skillsIcon/linux.png"
 import codeIcon from "./images/skillsIcon/Python-logo-notext.svg.png"
-import moveItIcon from "./images/backgroundIcons/arms.svg"
-import forceTorqueIcon from "./images/backgroundIcons/arm.svg"
+import isaacsIcon from "./images/skillsIcon/bullet-physics-logo.png"
+import airplaneIcon from "./images/skillsIcon/lidar_slam2.png"
 
 // Social Icon
 import githubIcon from "./images/contactIcon/github.svg"
@@ -37,7 +37,7 @@ const siteData = {
 
   name: "Asma Mohseni",
 
-  headerParagraph: "I am a Computer Science student focused on robotics software, with experience building reliable systems for robot control, motion planning, and real-world experimentation. I enjoy solving technical problems analytically, collaborating across teams, and turning research ideas into practical implementations.",
+  headerParagraph: "I am an ambitious CS student with a strong software development background that has prepared me to be a team player who communicates effectively, approaches problems analytically, and adapts quickly to tackle any challenge.",
 
   // Navigation labels
   nav: {
@@ -86,9 +86,9 @@ const siteData = {
   ],
 
   // About Section --------------
-  aboutParaOne: "I am a Computer Science student with a strong interest in robotics software, especially robot control, motion planning, and perception. My background has helped me become a collaborative teammate who communicates clearly, approaches problems analytically, and adapts quickly in research and engineering environments.",
+  aboutParaOne: "I am an ambitious CS student with a strong software development background that has prepared me to be a team player who communicates effectively, approaches problems analytically, and adapts quickly to tackle any challenge.",
 
-  aboutParaTwo: "My experience spans robotics software engineering in Python and C++, from dual-arm manipulation and trajectory generation to sensing and simulation, alongside full-stack application development with React and TypeScript. I enjoy building clean, maintainable systems and working on projects where practical implementation, thoughtful design, and real-world impact come together.",
+  aboutParaTwo: "My experience spans software engineering across robotics and application development using Python and C++ applications to full-stack web development with React, TypeScript. I enjoy creating clean, maintainable code and working on projects where user-friendly design, problem solving, and practical implementation come together to deliver meaningful results.",
 
   aboutParaThree: "",
 
@@ -148,20 +148,12 @@ const siteData = {
     {
       media: "urLousdVideo",
       type: 'video',
-      title: "Bimanual Object Handling",
-      description: "Implemented a Python bimanual (dual-arm) Universal Robots control workflow that coordinates two arms to handle an object through a staged manipulation sequence. The program performs simultaneous arm movements to target joint poses, supports master-only motion while the slave holds, and synchronizes gripper actions during key steps. The design is intended to extend toward force/torque-based estimation of object mass and center-of-mass for adaptive load sharing in future work.",
-      tags: [
-        "Universal Robots",
-        "Bimanual Manipulation",
-        "Dual-Arm Coordination",
-        "Robot Motion",
-        "Trajectory Generation",
-        "Python",
-        "Force/Torque Sensing"
-      ],
+      title: "Robot Color Tracking & Target Recovery",
+      description: "Engineered a ROS2-based color tracking pipeline deployed on real robot hardware, enabling the robot to follow a designated person by shirt color in multi-person environments. Designed and implemented HSV color segmentation, appearance-based re-identification to discriminate the target from visually similar individuals, and an autonomous recovery routine that rotates the robot to the last known bearing upon target loss before re-acquiring the lock.",
+      tags: ["ROS2", "Python", "OpenCV", "Computer Vision", "HSV Segmentation", "Real-Time Systems"],
       highlights: {
-        tech: "Python, UR dual-arm control, quintic joint-trajectory generation (~125 Hz), simultaneous move execution with completion monitoring, timed gripper control (RG2 via XML-RPC), interactive multi-position sequencing.",
-        impact: "Enabled repeatable synchronized dual-arm positioning and staged manipulation, establishing a foundation for future mass/center-of-mass estimation and adaptive bimanual load sharing."
+        tech: "HSV color segmentation, appearance-based re-identification, bearing-based recovery rotation, ROS2 navigation stack, real-time bounding box tracking, multi-person scene discrimination, dual-feed robot POV and external camera",
+        impact: ""
       },
       github: "https://github.com/bagherhassani"
     },
@@ -203,44 +195,44 @@ const siteData = {
     {
       img: codeIcon,
       para:
-        "Python",
+        "C++",
     },
     {
       img: clangIcon,
       para:
-        "C++",
+        "Java",
     },
 
     {
       img: RPIIcon,
       para:
-        "Java",
+        "JavaScript",
     },
     {
       img: rosIcon,
       para:
-        "ROS",
+        "TypeScript",
     },
     {
       img: openCVIcon,
       para:
-        "Git/GitHub",
+        "React Native",
     },
     {
       img: SolidworksIcon,
       para:
-        "Linux",
+        "HTML/CSS",
     },
 
     {
-      img: moveItIcon,
+      img: isaacsIcon,
       para:
-        "MoveIt",
+        "Git/GitHub",
     },
     {
-      img: forceTorqueIcon,
+      img: airplaneIcon,
       para:
-        "Force-Torque Sensing",
+        "Supabase",
     },
 
   ],
